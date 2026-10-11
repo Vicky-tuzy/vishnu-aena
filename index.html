@@ -13,8 +13,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vishnu & Aena">
 <meta property="og:description" content="A known tale. Sangeeth 14 Nov · Wedding 15 Nov 2026 · Changanassery">
-<meta property="og:url" content="https://vicky-tuzy.github.io/vishnu-aena/">
-<meta property="og:image" content="https://vicky-tuzy.github.io/vishnu-aena/img/preview.jpg">
+<meta property="og:url" content="https://vishnuaena.github.io/savethedate/">
+<meta property="og:image" content="https://vishnuaena.github.io/savethedate/img/preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -68,7 +68,10 @@ a { color: inherit; }
 .garet { font-family: var(--garet); }
 .only-wide { display: none !important; }
 
-.hero { background: #23301f; color: var(--white); text-align: center; }
+.hero { position: relative; background: #23301f; color: var(--white); text-align: center; }
+.hero-media { position: sticky; top: 0; z-index: 0; pointer-events: none; }
+.hero-title { position: relative; z-index: 1; background: transparent; }
+.hero-title .stage::after { display: none; }
 .hero .stage { display: grid; place-items: center; }
 .hero .photo { position: absolute; inset: 0; height: 100%; object-position: 46% center; }
 .hero .stage::after { content: ""; position: absolute; inset: 0; background: rgba(20,18,14,.25); }
@@ -137,10 +140,13 @@ a { color: inherit; }
   .body-copy { font-size: 1.843cqw; line-height: 1.38; hyphens: none; }
   .stage > .photo, .pair > .photo { height: 100%; }
   .groom .text, .meet .heading, .meet .pair { display: contents; }
-  .meet .heading span { position: absolute; }
+  .meet .heading > span { position: absolute; }
   .sangeeth .heading, .bigday .heading { white-space: nowrap; }
 
   /* SLIDE 1 */
+  /* the opening photo always fills the whole screen, whatever its shape (other slides keep the 16:9 Canva frame) */
+  .hero-media .stage { width: 100%; height: 100svh; aspect-ratio: auto; }
+  .hero-media .photo { object-position: center 30%; }
   .hero .stage::after { display: none; }
   .hero .photo { inset: 0; object-position: center; }
   .names { left: 17.7%; top: 41.5%; width: 64.5%; font-size: 6.10cqw; z-index: 1; }
@@ -220,12 +226,10 @@ a { color: inherit; }
 .js [data-a] { transition: opacity var(--t, 1s) var(--ease), transform var(--t, 1.1s) var(--ease), clip-path var(--t, 1.4s) cubic-bezier(.45, .05, .35, 1);
                transition-delay: calc(var(--d, 0) * var(--k) * 1s); }
 .js [data-a="fade"]       { opacity: 0; }
-.js [data-a="up"]         { opacity: 0; transform: translateY(18px); }
-.js [data-a="rise"]       { opacity: 0; transform: translateY(12%); }
-.js [data-a="from-right"] { opacity: 0; transform: translateX(14%); }
-.js [data-a="from-top"]   { opacity: 0; transform: translateY(-12%); }
-.js [data-a="zoom"]       { opacity: 0; transform: scale(1.08); --t: 1.8s; }
-.js [data-a="swing"]      { opacity: 0; transform: translateY(30%) rotate(-7deg); transform-origin: bottom left; --t: 1.2s; }
+.js [data-a="up"]         { opacity: 0; transform: translateY(10px); }
+/* phones: photos fade in and settle from a slight zoom, no sliding while the page is moving */
+.js :is([data-a="rise"], [data-a="from-right"], [data-a="from-top"], [data-a="swing"]) { opacity: 0; transform: scale(1.04); }
+.js [data-a="zoom"]       { opacity: 0; transform: scale(1.06); --t: 1.6s; }
 .js [data-a="write"]      { clip-path: inset(-60% 140% -60% -40%); }
 .js [data-a="type"] .ch   { opacity: 0; transition: opacity .25s ease; transition-delay: calc(var(--d, 0) * var(--k) * 1s + var(--i) * 55ms); }
 .js .w { white-space: nowrap; }
@@ -240,9 +244,13 @@ a { color: inherit; }
 
 @media (min-width: 900px) and (orientation: landscape) {
   :root { --k: 1; }
-  /* each wheel or trackpad scroll settles on the next slide, like turning a page */
-  html { scroll-snap-type: y mandatory; }
-  .screen { scroll-snap-align: start; }
+  /* laptops: the full Canva-style moves, with short travel so they read smoothly while scrolling */
+  .js [data-a="up"]         { transform: translateY(16px); }
+  .js [data-a="rise"]       { transform: translateY(6%); }
+  .js [data-a="from-right"] { transform: translateX(10%); }
+  .js [data-a="from-top"]   { transform: translateY(-6%); }
+  .js [data-a="swing"]      { transform: translateY(20%) rotate(-6deg); transform-origin: bottom left; --t: 1.2s; }
+  .js [data-a="zoom"]       { transform: scale(1.08); --t: 1.8s; }
 }
 @media (prefers-reduced-motion: reduce) {
   .js [data-a], .js [data-a] .ch { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
@@ -255,13 +263,18 @@ a { color: inherit; }
      fade | up (text rises) | rise (photo slides up) | from-right | from-top | zoom | swing | type (letter by letter) | write (script draws left to right) -->
 
 <!-- 1. HERO -->
-<section class="screen hero"><div class="stage">
-  <img class="photo" data-a="zoom" style="--d:0" src="img/hero.jpg" alt="Vishnu and Aena embracing among green vines">
-  <div class="hero-text">
-    <h1 class="names" data-a="up" style="--d:.4">VISHNU &amp; AENA</h1>
-    <p class="sub" data-a="fade" style="--d:1.2">A KNOWN TALE</p>
-  </div>
-</div></section>
+<!-- photo stays pinned while the names scroll up over it -->
+<div class="hero">
+  <div class="screen hero-media"><div class="stage">
+    <img class="photo" data-a="zoom" style="--d:0" fetchpriority="high" src="img/hero.jpg" alt="Vishnu and Aena embracing among green vines">
+  </div></div>
+  <section class="screen hero-title"><div class="stage">
+    <div class="hero-text">
+      <h1 class="names" data-a="up" style="--d:.4">VISHNU &amp; AENA</h1>
+      <p class="sub" data-a="fade" style="--d:1.2">A KNOWN TALE</p>
+    </div>
+  </div></section>
+</div>
 
 <!-- 2. WELCOME -->
 <section class="screen welcome"><div class="stage">
@@ -275,7 +288,7 @@ a { color: inherit; }
 
 <!-- 3. BRIDE -->
 <section class="screen person bride"><div class="stage">
-  <img loading="lazy" decoding="async" class="photo" data-a="rise" style="--d:0" src="img/bride.jpg" alt="Aena smiling, seated in a garden">
+  <img decoding="async" class="photo" data-a="rise" style="--d:0" src="img/bride.jpg" alt="Aena smiling, seated in a garden">
   <div class="text">
     <h2 class="heading" data-a="type" style="--d:.5">About the Bride</h2>
     <p class="tagline" data-a="write" style="--d:1.4">A shy soul and an adventurous heart.</p>
@@ -285,20 +298,20 @@ a { color: inherit; }
 
 <!-- 4. GROOM -->
 <section class="screen person groom"><div class="stage">
-  <img loading="lazy" decoding="async" class="photo" data-a="from-right" style="--d:0" src="img/groom.jpg" alt="Vishnu in a bandhgala, smiling">
+  <img decoding="async" class="photo" data-a="from-right" style="--d:0" src="img/groom.jpg" alt="Vishnu in a bandhgala, smiling">
   <div class="text">
-    <p class="tagline" data-a="write" style="--d:.5">A heart of gold, a soul that stays humble.</p>
-    <p class="body-copy" data-a="up" style="--d:1.5">Son of Mr Jaykumar S V and Mrs Susheela Jaykumar, born in Trivandrum, he never knew his girl lived in a state nearby. He always believed in finding peace and happiness in what he had. He filled rooms with happiness and laughter with his playfulness, and stayed close to his loved ones when they needed him. A single child who never shared his room now shares his life with his love.</p>
-    <h2 class="heading" data-a="type" style="--d:2.1">About the Groom</h2>
+    <p class="tagline" data-a="write" style="--d:1.4">A heart of gold, a soul that stays humble.</p>
+    <p class="body-copy" data-a="up" style="--d:2.4">Son of Mr Jaykumar S V and Mrs Susheela Jaykumar, born in Trivandrum, he never knew his girl lived in a state nearby. He always believed in finding peace and happiness in what he had. He filled rooms with happiness and laughter with his playfulness, and stayed close to his loved ones when they needed him. A single child who never shared his room now shares his life with his love.</p>
+    <h2 class="heading" data-a="type" style="--d:.5">About the Groom</h2>
   </div>
 </div></section>
 
 <!-- 5. WE MEET -->
 <section class="screen meet"><div class="stage">
-  <img loading="lazy" decoding="async" class="photo rings" data-a="from-top" style="--d:0" src="img/rings.jpg" alt="Exchanging rings">
+  <img decoding="async" class="photo rings" data-a="from-top" style="--d:0" src="img/rings.jpg" alt="Exchanging rings">
   <div class="pair">
-    <img loading="lazy" decoding="async" class="photo p1" data-a="from-right" style="--d:.3" src="img/meet1.jpg" alt="Holding hands with an orchid garland">
-    <img loading="lazy" decoding="async" class="photo p2" data-a="from-right" style="--d:.55" src="img/meet2.jpg" alt="Standing together in front of a tiled-roof house">
+    <img decoding="async" class="photo p1" data-a="from-right" style="--d:.3" src="img/meet1.jpg" alt="Holding hands with an orchid garland">
+    <img decoding="async" class="photo p2" data-a="from-right" style="--d:.55" src="img/meet2.jpg" alt="Standing together in front of a tiled-roof house">
   </div>
   <div class="text">
     <h2 class="heading"><span class="we" data-a="type" style="--d:1">We</span> <span class="mt" data-a="type" style="--d:1.2">Meet</span></h2>
@@ -308,14 +321,14 @@ a { color: inherit; }
 
 <!-- 6. SANGEETH -->
 <section class="screen event sangeeth"><div class="stage">
-  <img loading="lazy" decoding="async" class="photo first" data-a="swing" style="--d:0" src="img/sangeeth.jpg" alt="Vishnu and Aena walking in at their engagement">
-  <img loading="lazy" decoding="async" class="photo second only-wide" data-a="swing" style="--d:.3" src="img/sangeeth.jpg" alt="">
+  <img decoding="async" class="photo first" data-a="swing" style="--d:0" src="img/sangeeth.jpg" alt="Vishnu and Aena walking in at their engagement">
+  <img decoding="async" class="photo second only-wide" data-a="swing" style="--d:.3" src="img/sangeeth.jpg" alt="">
   <div class="text">
     <h2 class="heading" data-a="type" style="--d:.8">Sangeeth</h2>
     <ul class="details">
-      <li class="r1"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.5" src="img/ical-w.png" alt=""><span data-a="up" style="--d:1.5">November 14, 2026</span></li>
-      <li class="r2"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.75" src="img/iclock-w.png" alt=""><span data-a="up" style="--d:1.75">5:30 PM TO 9:30PM</span></li>
-      <li class="r3"><img loading="lazy" decoding="async" data-a="fade" style="--d:2" src="img/ipin-w.png" alt=""><a class="venue" data-a="up" style="--d:2" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Contour Convention Center, Changanassery</a></li>
+      <li class="r1"><img decoding="async" data-a="fade" style="--d:1.5" src="img/ical-w.png" alt=""><span data-a="up" style="--d:1.5">November 14, 2026</span></li>
+      <li class="r2"><img decoding="async" data-a="fade" style="--d:1.75" src="img/iclock-w.png" alt=""><span data-a="up" style="--d:1.75">5:30 PM TO 9:30PM</span></li>
+      <li class="r3"><img decoding="async" data-a="fade" style="--d:2" src="img/ipin-w.png" alt=""><a class="venue" data-a="up" style="--d:2" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Contour Convention Center, Changanassery</a></li>
     </ul>
     <a class="directions only-phone" data-a="up" style="--d:2.2" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Get directions</a>
     <p class="dress" data-a="write" style="--d:2.4">Suit up in yellow or green and grab your sneakers for a dance night</p>
@@ -327,14 +340,14 @@ a { color: inherit; }
   <div class="text">
     <h2 class="heading" data-a="type" style="--d:.4">The Big Day</h2>
     <ul class="details">
-      <li class="r1"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.2" src="img/ical-b.png" alt=""><span data-a="up" style="--d:1.2">15<sup>th</sup> November 2026</span></li>
-      <li class="r2"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.45" src="img/iclock-b.png" alt=""><span data-a="up" style="--d:1.45">11:30 AM - 12:00 PM</span></li>
-      <li class="r3"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.7" src="img/ipin-b.png" alt=""><a class="venue" data-a="up" style="--d:1.7" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Contour Convention Center, Changanassery</a></li>
+      <li class="r1"><img decoding="async" data-a="fade" style="--d:1.2" src="img/ical-b.png" alt=""><span data-a="up" style="--d:1.2">15<sup>th</sup> November 2026</span></li>
+      <li class="r2"><img decoding="async" data-a="fade" style="--d:1.45" src="img/iclock-b.png" alt=""><span data-a="up" style="--d:1.45">11:30 AM - 12:00 PM</span></li>
+      <li class="r3"><img decoding="async" data-a="fade" style="--d:1.7" src="img/ipin-b.png" alt=""><a class="venue" data-a="up" style="--d:1.7" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Contour Convention Center, Changanassery</a></li>
     </ul>
     <a class="directions only-phone" data-a="up" style="--d:1.9" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Get directions</a>
     <p class="dress" data-a="write" style="--d:2.1">Show your traditional culture with saree and mundu</p>
   </div>
-  <img loading="lazy" decoding="async" class="art only-phone" data-a="rise" style="--d:0" src="img/bigdayart.jpg" alt="Brass vases, flowers and a carved elephant on wooden stands">
+  <img decoding="async" class="art only-phone" data-a="rise" style="--d:0" src="img/bigdayart.jpg" alt="Brass vases, flowers and a carved elephant on wooden stands">
 </div></section>
 
 <script>
@@ -362,6 +375,17 @@ a { color: inherit; }
       el.appendChild(word);
     });
   });
+
+  /* decode photos in the background as soon as they arrive, and warm up the fonts,
+     so nothing heavy happens at the moment something appears mid-scroll */
+  document.querySelectorAll('img').forEach(function (img) {
+    var go = function () { if (img.decode) img.decode().catch(function () {}); };
+    if (img.complete) go(); else img.addEventListener('load', go, { once: true });
+  });
+  if (document.fonts && document.fonts.load) {
+    ['1em "The Seasons"', 'bold 1em "The Seasons"', '1em "Amsterdam Four"', '1em Garet', 'bold 1em Garet', '1em Brittany', '1em Lancelot']
+      .forEach(function (f) { document.fonts.load(f, 'Aa'); });
+  }
 
   var wide = window.matchMedia('(min-width: 900px) and (orientation: landscape)');
   var observer;
