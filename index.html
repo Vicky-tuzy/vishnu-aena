@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.add("js")</script>
+<title>Vishnu &amp; Aena</title>
+<meta name="description" content="Vishnu & Aena invite you to their Sangeeth on 14 November and wedding on 15 November 2026, Changanassery.">
+<!-- keep the invite out of Google search results; only people with the link will find it -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%8D%3C/text%3E%3C/svg%3E">
+<!-- what WhatsApp, Instagram etc. show when the link is shared -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vishnu & Aena">
+<meta property="og:description" content="A known tale. Sangeeth 14 Nov · Wedding 15 Nov 2026 · Changanassery">
+<meta property="og:url" content="https://vicky-tuzy.github.io/vishnu-aena/">
+<meta property="og:image" content="https://vicky-tuzy.github.io/vishnu-aena/img/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+/* =====================================================================
+   0. FONTS FROM THE CANVA DECK
+   ===================================================================== */
+/* FONT FILES: the real fonts from the Canva design, trimmed to the characters a wedding invite needs */
+@font-face { font-family: "The Seasons"; font-weight: 400; font-display: swap; src: url("fonts/seasons-regular.woff2") format("woff2"); }
+@font-face { font-family: "The Seasons"; font-weight: 700; font-display: swap; src: url("fonts/seasons-bold.woff2") format("woff2"); }
+@font-face { font-family: "Amsterdam Four"; font-display: swap; src: url("fonts/amsterdam-four.woff2") format("woff2"); }
+@font-face { font-family: "Garet"; font-weight: 400; font-display: swap; src: url("fonts/garet-book.woff2") format("woff2"); }
+@font-face { font-family: "Garet"; font-weight: 700; font-display: swap; src: url("fonts/garet-heavy.woff2") format("woff2"); }
+@font-face { font-family: "Brittany"; font-display: swap; src: url("fonts/brittany.woff2") format("woff2"); }
+@font-face { font-family: "Lancelot"; font-display: swap; src: url("fonts/lancelot.woff2") format("woff2"); }
+
+/* =====================================================================
+   1. DESIGN TOKENS (taken from the Canva deck)
+   ===================================================================== */
+:root {
+  --ink: #634C31;        /* all brown text */
+  --gold: #9D6729;       /* Big Day details */
+  --paper: #FBF8F3;  --night: #0c0c0b;  --cream: #F3EAD8;  --white: #FFFFFF;
+  --seasons: "The Seasons", "Times New Roman", serif;
+  --amsterdam: "Amsterdam Four", cursive;
+  --brittany: "Brittany", cursive;
+  --garet: "Garet", "Helvetica Neue", Arial, sans-serif;
+  --lancelot: "Lancelot", Georgia, serif;
+  color-scheme: light;  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--lancelot);
+       font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+p, h1, h2, ul { margin: 0; }
+a { color: inherit; }
+
+/* =====================================================================
+   2. PHONE LAYOUT (default): each screen stacks top to bottom
+   ===================================================================== */
+.screen { min-height: 100svh; position: relative; overflow: hidden; }
+.stage  { min-height: 100svh; position: relative; }
+.photo  { width: 100%; object-fit: cover; }
+.heading { font-family: var(--seasons); font-weight: 400; text-transform: uppercase; line-height: 1.1;
+           letter-spacing: .019em; font-size: clamp(2.4rem, 11vw, 4.2rem); }
+.tagline { font-family: var(--amsterdam); font-size: clamp(1.5rem, 6.4vw, 2.2rem); line-height: 1.35; margin: .7em 0 .9em; padding-left: .4em; }
+.text { padding: 2.25rem 1.75rem 3rem; max-width: 34rem; }
+.body-copy { text-align: justify; hyphens: auto; }
+.garet { font-family: var(--garet); }
+.only-wide { display: none !important; }
+
+.hero { background: #23301f; color: var(--white); text-align: center; }
+.hero .stage { display: grid; place-items: center; }
+.hero .photo { position: absolute; inset: 0; height: 100%; object-position: 46% center; }
+.hero .stage::after { content: ""; position: absolute; inset: 0; background: rgba(20,18,14,.25); }
+.hero-text { position: relative; z-index: 1; padding: 0 1rem; }
+.names { font-family: var(--seasons); font-weight: 700; font-size: clamp(1.9rem, 8.2vw, 6rem); letter-spacing: .109em; line-height: 1; }
+.sub { font-family: var(--garet); letter-spacing: .49em; font-size: .8rem; margin-top: 1rem; }
+
+.welcome { text-align: center; }
+.welcome .photo { height: 58svh; }
+.welcome .panel { padding: 2rem 1.5rem 3rem; }
+.small { font-family: var(--garet); letter-spacing: .109em; font-size: .8rem; line-height: 1.5; text-transform: uppercase; }
+.couple { font-family: var(--amsterdam); font-size: clamp(3rem, 15vw, 5rem); line-height: 1.3; margin: .8em 0 .5em; letter-spacing: .06em; }
+.couple span { display: block; }
+/* staggered like the Canva page: Vishnu left, & to the right, Aena below and indented */
+.couple .v   { text-align: left;  padding-left: .3em; }
+.couple .amp { text-align: right; padding-right: .5em; margin: -.75em 0 -.2em; }
+.couple .a   { text-align: center; padding-left: 1em; }
+
+.person .photo { height: 55svh; }
+.groom .text { display: flex; flex-direction: column; }
+.groom .heading { order: -2; text-align: right; }
+.groom .tagline { order: -1; }
+
+.meet .rings { height: 38svh; }
+.meet .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+.meet .pair .photo { height: 24svh; }
+.meet .photo.p1 { object-position: 50% 28.5%; }
+.meet .photo.p2 { object-position: 50% 34.4%; }
+.meet .body-copy { margin-top: 1.25rem; font-family: var(--garet); line-height: 1.6; }
+
+.event .stage { display: flex; flex-direction: column; }
+.sangeeth { color: var(--white);
+  /* dark wash on phones keeps the white text readable over the sparkle */
+  background: linear-gradient(rgba(12,11,10,.5), rgba(12,11,10,.7)), url("img/disco.jpg") center / cover, var(--night); }
+.sangeeth .photo { height: 45svh; object-position: 50% 70%; filter: grayscale(1); }
+.bigday { background: url("img/paper.jpg") center / cover, var(--cream); }
+.bigday .art { margin-top: auto; width: 100%;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%); mask-image: linear-gradient(to bottom, transparent, #000 18%); }
+.details { list-style: none; padding: 0; margin: 1.25rem 0; }
+.details li { display: flex; gap: .7em; align-items: center; padding: .3rem 0; }
+.details img { width: 1.9em; height: 1.9em; flex: none; }
+.sangeeth .details { font-family: var(--garet); font-weight: 700; }
+.bigday .details { font-family: var(--seasons); font-weight: 700; color: var(--gold); font-size: 1.25rem; }
+.directions { display: inline-block; margin: .25rem 0 1.25rem; padding: .7rem 1.4rem; border: 1px solid currentColor;
+              border-radius: 999px; text-decoration: none; font-family: var(--garet); font-size: .9rem; letter-spacing: .05em; }
+.directions:focus-visible, .venue:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.venue { text-decoration: none; }
+.dress { font-family: var(--amsterdam); font-size: clamp(1.6rem, 7vw, 2.1rem); line-height: 1.3; }
+.bigday .dress { font-family: var(--brittany); color: var(--gold); text-align: center; }
+
+/* =====================================================================
+   3. LAPTOP LAYOUT: a 16:9 stage per screen, every box placed with the
+      exact position (% of slide) and size from the Canva deck.
+      1cqw = 1% of the stage width; font size in cqw = Canva pt / 14.4
+   ===================================================================== */
+@media (min-width: 900px) and (orientation: landscape) {
+  .screen { display: grid; place-items: center; }
+  .stage { width: min(100%, calc(100svh * 16 / 9)); min-height: 0; aspect-ratio: 16 / 9; container-type: inline-size; overflow: hidden; }
+  .text, .hero-text, .panel, .couple, .pair { display: contents; }
+  .stage * { margin: 0; }
+  .stage > *, .text > *, .hero-text > *, .panel > *, .couple > *, .pair > * { position: absolute; }
+  .only-wide { display: block !important; }
+  .only-phone { display: none !important; }
+  .heading { font-size: 5.82cqw; line-height: 1.2; }
+  .tagline { font-size: 2.676cqw; line-height: 1.3; padding-left: 0; }
+  .body-copy { font-size: 1.843cqw; line-height: 1.38; hyphens: none; }
+  .stage > .photo, .pair > .photo { height: 100%; }
+  .groom .text, .meet .heading, .meet .pair { display: contents; }
+  .meet .heading span { position: absolute; }
+  .sangeeth .heading, .bigday .heading { white-space: nowrap; }
+
+  /* SLIDE 1 */
+  .hero .stage::after { display: none; }
+  .hero .photo { inset: 0; object-position: center; }
+  .names { left: 17.7%; top: 41.5%; width: 64.5%; font-size: 6.10cqw; z-index: 1; }
+  .sub   { left: 38.4%; top: 56.6%; width: 30.5%; font-size: 1.711cqw; z-index: 1; }
+
+  /* SLIDE 2 */
+  .welcome .photo { left: 0; top: 0; width: 50%; }
+  .welcome .w1 { left: 63.8%; top: 12.2%; width: 23%; font-size: 1.731cqw; line-height: 1.35; }
+  .welcome .w2 { left: 63.8%; top: 83.2%; width: 23%; font-size: 1.592cqw; line-height: 1.35; }
+  .couple span { font-size: 5.82cqw; letter-spacing: .109em; line-height: 1.6; text-align: center; }
+  /* deck boxes, nudged so the glyphs land where Canva draws them (script fonts sit differently in a browser line box) */
+  .couple .v   { left: 60.3%; top: 31.9%; width: 26.5%; }
+  .couple .amp { left: 76.05%; top: 45.0%; width: 14%; }
+  .couple .a   { left: 61.25%; top: 53.5%; width: 26.5%; }
+
+  /* SLIDE 3 */
+  .bride .photo   { left: 0; top: 0; width: 37.5%; }
+  .bride .heading { left: 43.1%; top: 16.6%; width: 37.3%; }
+  .bride .tagline { left: 43.4%; top: 43.7%; width: 34.2%; white-space: nowrap; }
+  .bride .body-copy { left: 43.4%; top: 57.1%; width: 41.5%; }
+
+  /* SLIDE 4 */
+  .groom .photo   { left: 62.5%; top: 0; width: 37.5%; }
+  .groom .heading { left: 18.9%; top: 65.1%; width: 37.3%; }
+  .groom .tagline { left: 9.1%; top: 12.2%; width: 41.5%; white-space: nowrap; }
+  .groom .body-copy { left: 8.5%; top: 25.6%; width: 41.5%; }
+
+  /* SLIDE 5 */
+  .meet .rings { left: 0; top: 0; width: 72.6%; height: 63.6%; }
+  .meet .pair .p1 { left: 74.2%; top: 0; width: 25.8%; height: 30.6%; }
+  .meet .pair .p2 { left: 74.2%; top: 33%; width: 25.8%; height: 30.6%; }
+  .meet .we { left: 10.7%; top: 46.8%; color: var(--white); }
+  .meet .mt { left: 10.7%; top: 64.7%; }
+  .meet .we, .meet .mt { font-size: 8.415cqw; line-height: 1.2; }
+  .meet .body-copy { left: 40.7%; top: 67.6%; width: 51.7%; font-size: 1.631cqw; line-height: 1.4; }
+
+  /* SLIDE 6 */
+  .sangeeth .stage { background: url("img/disco.jpg") center / cover, var(--night); }
+  .sangeeth .photo.first  { left: -0.7%; top: -2.1%; width: 28.4%; height: 102.1%; object-position: 60.6% center; }
+  .sangeeth .photo.second { left: 27.7%; top: 0;     width: 28.4%; height: 102.1%; object-position: 58.7% center; }
+  .sangeeth .heading { left: 63%; top: 21.8%; width: 31.4%; font-size: 4.894cqw; color: #FFFFFE; }
+  .sangeeth .dress   { left: 63.4%; top: 65.1%; width: 28.6%; font-size: 2.676cqw; line-height: 1.35; }
+
+  /* SLIDE 7 */
+  .bigday .stage { background: url("img/bigdayfull.jpg") top / 100% auto no-repeat, var(--cream); }
+  .bigday .heading { left: 63%; top: 21.8%; width: 31.4%; font-size: 4.894cqw; }
+  .bigday .dress   { left: 64.1%; top: 73.9%; width: 34.8%; font-size: 2.676cqw; line-height: 1.73; }
+
+  /* event detail rows: icon and text placed separately, like the deck */
+  .details { display: contents; }
+  .details li { display: contents; }
+  .details li > * { position: absolute; }
+  .details img { width: auto; height: auto; }
+  .sangeeth .details span, .sangeeth .details a { font-size: 1.597cqw; line-height: 1.3; }
+  .sangeeth .r1 img { left: 63.0%; top: 35.8%; width: 2.8%; }
+  .sangeeth .r2 img { left: 63.4%; top: 44.4%; width: 2.5%; }
+  .sangeeth .r3 img { left: 63.4%; top: 52.5%; width: 2.5%; }
+  .sangeeth .r1 span { left: 67.1%; top: 36.8%; width: 16.9%; }
+  .sangeeth .r2 span { left: 67.1%; top: 45.1%; width: 16.9%; }
+  .sangeeth .r3 span, .sangeeth .r3 a { left: 67.1%; top: 53.1%; width: 24.9%; }
+  .bigday .details span, .bigday .details a { font-size: 3.003cqw; line-height: 1.9; left: 66.1%; width: 33.9%; }
+  .bigday .details img { width: 2.1%; left: 63%; }
+  /* tall line spacing matches Canva's wrapped venue line; tops pulled up to compensate */
+  .bigday .r1 img { top: 36.5%; }  .bigday .r1 span { top: 33.2%; }
+  .bigday .r2 img { top: 46.2%; }  .bigday .r2 span { top: 42.9%; }
+  .bigday .r3 img { top: 56.8%; }  .bigday .r3 a    { top: 53.5%; }
+  .venue { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; text-decoration-color: color-mix(in srgb, currentColor 45%, transparent); }
+}
+
+/* =====================================================================
+   4. SCROLL ANIMATIONS
+   Start states apply only when JavaScript is running (html.js), so the
+   invite is never blank if scripts fail. --k scales every delay:
+   full choreography on laptops, quicker on phones.
+   ===================================================================== */
+:root { --k: .45; --ease: cubic-bezier(.2, .7, .2, 1); --clip-open: inset(-60% -40% -60% -40%); }
+.js [data-a] { transition: opacity var(--t, 1s) var(--ease), transform var(--t, 1.1s) var(--ease), clip-path var(--t, 1.4s) cubic-bezier(.45, .05, .35, 1);
+               transition-delay: calc(var(--d, 0) * var(--k) * 1s); }
+.js [data-a="fade"]       { opacity: 0; }
+.js [data-a="up"]         { opacity: 0; transform: translateY(18px); }
+.js [data-a="rise"]       { opacity: 0; transform: translateY(12%); }
+.js [data-a="from-right"] { opacity: 0; transform: translateX(14%); }
+.js [data-a="from-top"]   { opacity: 0; transform: translateY(-12%); }
+.js [data-a="zoom"]       { opacity: 0; transform: scale(1.08); --t: 1.8s; }
+.js [data-a="swing"]      { opacity: 0; transform: translateY(30%) rotate(-7deg); transform-origin: bottom left; --t: 1.2s; }
+.js [data-a="write"]      { clip-path: inset(-60% 140% -60% -40%); }
+.js [data-a="type"] .ch   { opacity: 0; transition: opacity .25s ease; transition-delay: calc(var(--d, 0) * var(--k) * 1s + var(--i) * 55ms); }
+.js .w { white-space: nowrap; }
+
+/* entered */
+.js .in[data-a], .js .in [data-a] { opacity: 1; transform: none; }
+.js .in[data-a="write"], .js .in [data-a="write"] { clip-path: var(--clip-open); }
+.js .in[data-a="type"] .ch, .js .in [data-a="type"] .ch { opacity: 1; }
+
+/* leaving: everything resets quickly and together, ready to play again */
+.js .screen:not(.in) [data-a]:not(.in), .js .screen:not(.in) [data-a]:not(.in) .ch { transition-duration: .3s; transition-delay: 0s; }
+
+@media (min-width: 900px) and (orientation: landscape) {
+  :root { --k: 1; }
+  /* each wheel or trackpad scroll settles on the next slide, like turning a page */
+  html { scroll-snap-type: y mandatory; }
+  .screen { scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-a], .js [data-a] .ch { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANIMATION KEY: data-a = how it enters, --d = delay in seconds after its slide arrives
+     fade | up (text rises) | rise (photo slides up) | from-right | from-top | zoom | swing | type (letter by letter) | write (script draws left to right) -->
+
+<!-- 1. HERO -->
+<section class="screen hero"><div class="stage">
+  <img class="photo" data-a="zoom" style="--d:0" src="img/hero.jpg" alt="Vishnu and Aena embracing among green vines">
+  <div class="hero-text">
+    <h1 class="names" data-a="up" style="--d:.4">VISHNU &amp; AENA</h1>
+    <p class="sub" data-a="fade" style="--d:1.2">A KNOWN TALE</p>
+  </div>
+</div></section>
+
+<!-- 2. WELCOME -->
+<section class="screen welcome"><div class="stage">
+  <img class="photo" data-a="fade" style="--d:0" src="img/welcome.jpg" alt="Aena resting her head on Vishnu's shoulder">
+  <div class="panel">
+    <p class="small w1" data-a="up" style="--d:.4">Welcome to our story</p>
+    <p class="couple"><span class="v" data-a="write" style="--d:.8">Vishnu</span><span class="amp" data-a="write" style="--d:1.9; --t:.7s">&amp;</span><span class="a" data-a="write" style="--d:2.3">Aena</span></p>
+    <p class="small w2" data-a="up" style="--d:3.2">College love story turns forever</p>
+  </div>
+</div></section>
+
+<!-- 3. BRIDE -->
+<section class="screen person bride"><div class="stage">
+  <img loading="lazy" decoding="async" class="photo" data-a="rise" style="--d:0" src="img/bride.jpg" alt="Aena smiling, seated in a garden">
+  <div class="text">
+    <h2 class="heading" data-a="type" style="--d:.5">About the Bride</h2>
+    <p class="tagline" data-a="write" style="--d:1.4">A shy soul and an adventurous heart.</p>
+    <p class="body-copy" data-a="up" style="--d:2.4">Daughter of Mr Biju Philip and Mrs Libee Biju, brought up in Kotagiri, she never knew she would find her forever from her native. She always believed in love, and to find her love she waited 23 years. She cared for everyone and filled rooms with joy and affection. A person who loved creating videos and taking photos has now found a personal photographer.</p>
+  </div>
+</div></section>
+
+<!-- 4. GROOM -->
+<section class="screen person groom"><div class="stage">
+  <img loading="lazy" decoding="async" class="photo" data-a="from-right" style="--d:0" src="img/groom.jpg" alt="Vishnu in a bandhgala, smiling">
+  <div class="text">
+    <p class="tagline" data-a="write" style="--d:.5">A heart of gold, a soul that stays humble.</p>
+    <p class="body-copy" data-a="up" style="--d:1.5">Son of Mr Jaykumar S V and Mrs Susheela Jaykumar, born in Trivandrum, he never knew his girl lived in a state nearby. He always believed in finding peace and happiness in what he had. He filled rooms with happiness and laughter with his playfulness, and stayed close to his loved ones when they needed him. A single child who never shared his room now shares his life with his love.</p>
+    <h2 class="heading" data-a="type" style="--d:2.1">About the Groom</h2>
+  </div>
+</div></section>
+
+<!-- 5. WE MEET -->
+<section class="screen meet"><div class="stage">
+  <img loading="lazy" decoding="async" class="photo rings" data-a="from-top" style="--d:0" src="img/rings.jpg" alt="Exchanging rings">
+  <div class="pair">
+    <img loading="lazy" decoding="async" class="photo p1" data-a="from-right" style="--d:.3" src="img/meet1.jpg" alt="Holding hands with an orchid garland">
+    <img loading="lazy" decoding="async" class="photo p2" data-a="from-right" style="--d:.55" src="img/meet2.jpg" alt="Standing together in front of a tiled-roof house">
+  </div>
+  <div class="text">
+    <h2 class="heading"><span class="we" data-a="type" style="--d:1">We</span> <span class="mt" data-a="type" style="--d:1.2">Meet</span></h2>
+    <p class="body-copy" data-a="up" style="--d:1.8">On June 1, 2023, they first met at IBS Hyderabad, walking through the campus. He wore a green shirt and she wore a blue top. Their eyes crossed, said their first hi, never knowing they would become one. A random hi turned into best friends, comfort places, and now a forever. They decided to make it official on October 3, 2026, and now invite you to their big day.</p>
+  </div>
+</div></section>
+
+<!-- 6. SANGEETH -->
+<section class="screen event sangeeth"><div class="stage">
+  <img loading="lazy" decoding="async" class="photo first" data-a="swing" style="--d:0" src="img/sangeeth.jpg" alt="Vishnu and Aena walking in at their engagement">
+  <img loading="lazy" decoding="async" class="photo second only-wide" data-a="swing" style="--d:.3" src="img/sangeeth.jpg" alt="">
+  <div class="text">
+    <h2 class="heading" data-a="type" style="--d:.8">Sangeeth</h2>
+    <ul class="details">
+      <li class="r1"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.5" src="img/ical-w.png" alt=""><span data-a="up" style="--d:1.5">November 14, 2026</span></li>
+      <li class="r2"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.75" src="img/iclock-w.png" alt=""><span data-a="up" style="--d:1.75">5:30 PM TO 9:30PM</span></li>
+      <li class="r3"><img loading="lazy" decoding="async" data-a="fade" style="--d:2" src="img/ipin-w.png" alt=""><a class="venue" data-a="up" style="--d:2" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Contour Convention Center, Changanassery</a></li>
+    </ul>
+    <a class="directions only-phone" data-a="up" style="--d:2.2" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Get directions</a>
+    <p class="dress" data-a="write" style="--d:2.4">Suit up in yellow or green and grab your sneakers for a dance night</p>
+  </div>
+</div></section>
+
+<!-- 7. THE BIG DAY -->
+<section class="screen event bigday"><div class="stage">
+  <div class="text">
+    <h2 class="heading" data-a="type" style="--d:.4">The Big Day</h2>
+    <ul class="details">
+      <li class="r1"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.2" src="img/ical-b.png" alt=""><span data-a="up" style="--d:1.2">15<sup>th</sup> November 2026</span></li>
+      <li class="r2"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.45" src="img/iclock-b.png" alt=""><span data-a="up" style="--d:1.45">11:30 AM - 12:00 PM</span></li>
+      <li class="r3"><img loading="lazy" decoding="async" data-a="fade" style="--d:1.7" src="img/ipin-b.png" alt=""><a class="venue" data-a="up" style="--d:1.7" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Contour Convention Center, Changanassery</a></li>
+    </ul>
+    <a class="directions only-phone" data-a="up" style="--d:1.9" href="https://maps.app.goo.gl/vb5FB3UTcgHSV18X7" target="_blank" rel="noopener">Get directions</a>
+    <p class="dress" data-a="write" style="--d:2.1">Show your traditional culture with saree and mundu</p>
+  </div>
+  <img loading="lazy" decoding="async" class="art only-phone" data-a="rise" style="--d:0" src="img/bigdayart.jpg" alt="Brass vases, flowers and a carved elephant on wooden stands">
+</div></section>
+
+<script>
+/* ===== SCROLL ANIMATIONS =====
+   1. Split "type" headings into one span per letter so each letter can appear in turn.
+   2. Watch the page as it scrolls. When something comes into view it gets the class "in";
+      the CSS then plays its entrance. When it leaves the screen completely, "in" is removed
+      so the entrance plays again next time it comes into view.
+   Laptops watch whole slides (everything on a slide plays as one choreographed sequence).
+   Phones watch each element, because a phone screen only shows part of a slide at a time. */
+(function () {
+  document.querySelectorAll('[data-a="type"]').forEach(function (el) {
+    var text = el.textContent, n = 0;
+    el.setAttribute('aria-label', text);
+    el.textContent = '';
+    text.split(/(\s+)/).forEach(function (part) {
+      if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode(' ')); return; }
+      var word = document.createElement('span');
+      word.className = 'w'; word.setAttribute('aria-hidden', 'true');
+      Array.from(part).forEach(function (c) {
+        var ch = document.createElement('span');
+        ch.className = 'ch'; ch.style.setProperty('--i', n++); ch.textContent = c;
+        word.appendChild(ch);
+      });
+      el.appendChild(word);
+    });
+  });
+
+  var wide = window.matchMedia('(min-width: 900px) and (orientation: landscape)');
+  var observer;
+
+  function watch() {
+    if (observer) observer.disconnect();
+    document.querySelectorAll('.in').forEach(function (el) { el.classList.remove('in'); });
+    /* pairs of [what to watch, what gets "in"]. Script lines start fully clipped (invisible),
+       and the browser treats invisible things as off-screen, so on phones we watch their parent instead. */
+    var pairs = wide.matches
+      ? Array.from(document.querySelectorAll('.screen')).map(function (s) { return [s, s]; })
+      : Array.from(document.querySelectorAll('[data-a]')).map(function (el) {
+          return [el.getAttribute('data-a') === 'write' ? el.parentElement : el, el];
+        });
+    var marks = new Map();
+    pairs.forEach(function (p) { (marks.get(p[0]) || marks.set(p[0], []).get(p[0])).push(p[1]); });
+    var enterAt = wide.matches ? 0.5 : 0.2;   /* share of the thing that must be visible to start */
+    observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var on = e.intersectionRatio >= enterAt, off = !e.isIntersecting;
+        marks.get(e.target).forEach(function (m) {
+          if (on) m.classList.add('in'); else if (off) m.classList.remove('in');
+        });
+      });
+    }, { threshold: [0, enterAt] });
+    marks.forEach(function (_, t) { observer.observe(t); });
+  }
+
+  watch();
+  wide.addEventListener ? wide.addEventListener('change', watch) : wide.addListener(watch);
+})();
+</script>
+</body>
+</html>
