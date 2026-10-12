@@ -64,7 +64,7 @@ a { color: inherit; }
            letter-spacing: .019em; font-size: clamp(2.4rem, 11vw, 4.2rem); }
 .tagline { font-family: var(--amsterdam); font-size: clamp(1.5rem, 6.4vw, 2.2rem); line-height: 1.35; margin: .7em 0 .9em; padding-left: .4em; }
 .text { padding: 2.25rem 1.75rem 3rem; max-width: 34rem; }
-.body-copy { text-align: justify; hyphens: auto; }
+.body-copy { text-align: justify; hyphens: auto; text-wrap: pretty; }
 .garet { font-family: var(--garet); }
 .only-wide { display: none !important; }
 
@@ -101,6 +101,7 @@ a { color: inherit; }
 .meet .photo.p1 { object-position: 50% 28.5%; }
 .meet .photo.p2 { object-position: 50% 34.4%; }
 .meet .body-copy { margin-top: 1.25rem; font-family: var(--garet); line-height: 1.6; }
+.body-copy p + p { margin-top: .7em; }
 
 .event .stage { display: flex; flex-direction: column; }
 .sangeeth { color: var(--white);
@@ -181,7 +182,9 @@ a { color: inherit; }
   .meet .we { left: 10.7%; top: 46.8%; color: var(--white); }
   .meet .mt { left: 10.7%; top: 64.7%; }
   .meet .we, .meet .mt { font-size: 8.415cqw; line-height: 1.2; }
-  .meet .body-copy { left: 40.7%; top: 67.6%; width: 51.7%; font-size: 1.631cqw; line-height: 1.4; }
+  /* longer story than the Canva version: slightly smaller and wider so all three paragraphs fit on the slide */
+  .meet .body-copy { left: 40.7%; top: 66.8%; width: 55%; font-size: 1.38cqw; line-height: 1.36; }
+  .meet .body-copy p + p { margin-top: .45em; }
 
   /* SLIDE 6 */
   .sangeeth .stage { background: url("img/disco.jpg") center / cover, var(--night); }
@@ -306,7 +309,7 @@ a { color: inherit; }
   </div>
 </div></section>
 
-<!-- 5. WE MEET -->
+<!-- 5. THEY MET -->
 <section class="screen meet"><div class="stage">
   <img decoding="async" class="photo rings" data-a="from-top" style="--d:0" src="img/rings.jpg" alt="Exchanging rings">
   <div class="pair">
@@ -314,8 +317,12 @@ a { color: inherit; }
     <img decoding="async" class="photo p2" data-a="from-right" style="--d:.55" src="img/meet2.jpg" alt="Standing together in front of a tiled-roof house">
   </div>
   <div class="text">
-    <h2 class="heading"><span class="we" data-a="type" style="--d:1">We</span> <span class="mt" data-a="type" style="--d:1.2">Meet</span></h2>
-    <p class="body-copy" data-a="up" style="--d:1.8">On June 1, 2023, they first met at IBS Hyderabad, walking through the campus. He wore a green shirt and she wore a blue top. Their eyes crossed, said their first hi, never knowing they would become one. A random hi turned into best friends, comfort places, and now a forever. They decided to make it official on October 3, 2026, and now invite you to their big day.</p>
+    <h2 class="heading"><span class="we" data-a="type" style="--d:1">They</span> <span class="mt" data-a="type" style="--d:1.2">Met</span></h2>
+    <div class="body-copy" data-a="up" style="--d:1.8">
+      <p>On June 1, 2023, they first met at IBS Hyderabad, walking across the campus. He wore a green shirt, and she wore a blue top. Their eyes met, and they exchanged their first hello, never knowing that one day, they would become one.</p>
+      <p>A random hello turned into best friends, each other’s comfort place, and now, forever.</p>
+      <p>They made it official on October 3, 2026, and now invite you to be a part of their big day as they begin their forever together.</p>
+    </div>
   </div>
 </div></section>
 
